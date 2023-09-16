@@ -50,9 +50,13 @@ public class Bambooms
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
+        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.accept(ModItems.BAMBOOM_BLOCK_ITEM);
+            event.accept(ModItems.BAMBOOM_MINECART_ITEM);
+        }
         if (event.getTabKey() == CreativeModeTabs.COMBAT)
             event.accept(ModItems.BAMBOOM_BLOCK_ITEM);
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
+            event.accept(ModItems.BAMBOOM_MINECART_ITEM);
     }
 }
