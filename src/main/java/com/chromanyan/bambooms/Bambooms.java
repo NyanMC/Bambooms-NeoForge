@@ -1,5 +1,6 @@
 package com.chromanyan.bambooms;
 
+import com.chromanyan.bambooms.init.DispenserBehaviors;
 import com.chromanyan.bambooms.init.ModBlocks;
 import com.chromanyan.bambooms.init.ModEntities;
 import com.chromanyan.bambooms.init.ModItems;
@@ -11,6 +12,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -28,20 +30,21 @@ public class Bambooms
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        // Register the Deferred Register to the mod event bus so blocks get registered
+        modEventBus.addListener(this::commonSetup);
+
         ModBlocks.BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
         ModItems.ITEMS.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
 
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        DispenserBehaviors.registerBehaviors();
     }
 
     // Add the example block item to the building blocks tab
