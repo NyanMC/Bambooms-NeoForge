@@ -1,6 +1,7 @@
 package com.chromanyan.bambooms;
 
 import com.chromanyan.bambooms.init.ModBlocks;
+import com.chromanyan.bambooms.init.ModEntities;
 import com.chromanyan.bambooms.init.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -31,6 +32,7 @@ public class Bambooms
         ModBlocks.BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
         ModItems.ITEMS.register(modEventBus);
+        ModEntities.ENTITY_TYPES.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
