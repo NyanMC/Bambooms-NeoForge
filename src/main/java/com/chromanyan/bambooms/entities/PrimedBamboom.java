@@ -1,5 +1,6 @@
 package com.chromanyan.bambooms.entities;
 
+import com.chromanyan.bambooms.Config;
 import com.chromanyan.bambooms.NoGriefingExplosionDamageCalculator;
 import com.chromanyan.bambooms.init.ModEntities;
 import net.minecraft.core.BlockPos;
@@ -36,7 +37,7 @@ public class PrimedBamboom extends PrimedTnt {
 
     @Override
     protected void explode() {
-        float f = 4.0F;
+        float f = Config.blastPower;
         this.level().explode(this, null, new NoGriefingExplosionDamageCalculator(), this.getX(), this.getY(0.0625D), this.getZ(), f, false, Level.ExplosionInteraction.TNT);
     }
 

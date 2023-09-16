@@ -1,5 +1,6 @@
 package com.chromanyan.bambooms.entities;
 
+import com.chromanyan.bambooms.Config;
 import com.chromanyan.bambooms.NoGriefingExplosionDamageCalculator;
 import com.chromanyan.bambooms.init.ModBlocks;
 import com.chromanyan.bambooms.init.ModEntities;
@@ -44,7 +45,7 @@ public class MinecartBamboom extends MinecartTNT {
                 d0 = 5.0D;
             }
 
-            this.level().explode(this, p_259539_, new NoGriefingExplosionDamageCalculator(), this.getX(), this.getY(), this.getZ(), (float)(4.0D + this.random.nextDouble() * 1.5D * d0), false, Level.ExplosionInteraction.TNT);
+            this.level().explode(this, p_259539_, new NoGriefingExplosionDamageCalculator(), this.getX(), this.getY(), this.getZ(), (float)(Config.blastPower + this.random.nextDouble() * 1.5D * d0), false, Level.ExplosionInteraction.TNT);
             this.discard();
         }
 
